@@ -1,20 +1,178 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CoreX AI</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoreX AI – From Data to Intelligence</title>
   <style>
-    body { font-family: 'Segoe UI', sans-serif; background: #f4f4f4; text-align: center; margin: 0; padding: 80px 20px; }
-    h1 { font-size: 2.5rem; color: #222; margin-bottom: 10px; }
-    p { color: #555; font-size: 1.2rem; }
-    footer { margin-top: 50px; font-size: 0.9rem; color: #888; }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&display=swap');
+    body {
+      margin: 0;
+      font-family: 'Noto Sans KR', 'Segoe UI', sans-serif;
+      background-color: #0A192F;
+      color: #E0E0E0;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: rgba(10,25,47,0.9);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 80px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    header h1 {
+      color: #64FFDA;
+      font-size: 1.8rem;
+      margin: 0;
+    }
+    nav a {
+      color: #E0E0E0;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 1rem;
+    }
+    nav a:hover {
+      color: #64FFDA;
+    }
+    section {
+      padding: 100px 80px;
+      text-align: center;
+    }
+    .hero {
+      background: linear-gradient(to bottom right, #0A192F, #112240);
+      padding: 180px 40px 140px;
+    }
+    .hero h2 {
+      font-size: 2.8rem;
+      color: #64FFDA;
+      margin-bottom: 15px;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      color: #CCD6F6;
+      margin-bottom: 50px;
+    }
+    .image-slot {
+      border: 2px dashed #64FFDA;
+      width: 80%;
+      height: 300px;
+      margin: 0 auto;
+      border-radius: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #64FFDA;
+      font-size: 1rem;
+    }
+    .about, .projects, .contact {
+      background: #112240;
+      border-radius: 12px;
+      margin-top: 60px;
+      padding: 80px 40px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+    h3 {
+      color: #64FFDA;
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .card {
+      background: #0A192F;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      transition: 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(100,255,218,0.3);
+    }
+    footer {
+      text-align: center;
+      color: #8892B0;
+      padding: 30px;
+      border-top: 1px solid #233554;
+      margin-top: 100px;
+      font-size: 0.9rem;
+    }
+    .contact a {
+      color: #64FFDA;
+      border: 1px solid #64FFDA;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .contact a:hover {
+      background: #64FFDA;
+      color: #0A192F;
+    }
   </style>
 </head>
 <body>
-  <h1>CoreX AI</h1>
-  <p>From Data to Intelligence</p>
-  <p>AI 기반 시각지능 솔루션 기업</p>
-  <footer>© 2025 CoreX AI. All Rights Reserved.</footer>
+  <header>
+    <h1>CoreX AI</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>From Data to Intelligence</h2>
+    <p>AI 기반 시각지능 솔루션으로 더 나은 세상을 만듭니다.</p>
+    <div class="image-slot">[여기에 Hero 이미지를 추가하세요]</div>
+  </section>
+
+  <section id="about" class="about">
+    <h3>About Us</h3>
+    <p>
+      CoreX AI는 인공지능 기반 시각지능 솔루션 전문 기업으로,  
+      데이터로부터 새로운 가치를 창출하고 사회적 문제를 해결합니다.<br><br>
+      농업, 환경, 보안, 교육 등 다양한 산업에 최적화된 AI 모델을 직접 설계하고  
+      엣지 디바이스 환경에서도 실시간으로 동작하는 지능형 시스템을 제공합니다.
+    </p>
+  </section>
+
+  <section id="projects" class="projects">
+    <h3>Our Projects</h3>
+    <div class="projects-grid">
+      <div class="card">
+        <h4>AI Strawberry Doctor</h4>
+        <p>딸기 병해 진단 및 예찰 시스템<br>딥러닝 기반 이미지 분석으로 병해 조기탐지</p>
+      </div>
+      <div class="card">
+        <h4>BeeSave</h4>
+        <p>AI 꿀벌 실종 예방 솔루션<br>객체 추적 기반 비행 패턴 분석 및 이상 감지</p>
+      </div>
+      <div class="card">
+        <h4>SiteGuard AI</h4>
+        <p>불법 사이트 탐지·차단 프로그램<br>OCR+BERT 기반 이미지·텍스트 분석</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h3>Contact</h3>
+    <p>문의 또는 제휴 제안을 환영합니다.</p>
+    <a href="mailto:corexai01@gmail.com">📧 이메일로 문의하기</a>
+  </section>
+
+  <footer>
+    © 2025 CoreX AI. All Rights Reserved.
+  </footer>
 </body>
 </html>
