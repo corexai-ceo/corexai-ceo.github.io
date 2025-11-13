@@ -3,144 +3,133 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CoreX AI | From Data to Intelligence</title>
+  <title>CoreX AI</title>
   <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background-color: #f4f4f4;
-      color: #222;
-      line-height: 1.6;
-    }
+    body { margin:0; font-family: 'Pretendard', sans-serif; background:#f5f6f8; color:#222; }
 
+    /* HERO */
     header {
-      background-color: #20232a;
-      color: white;
-      text-align: center;
-      padding: 80px 20px;
-      background-image: url("./images/hero.jpg");
-      background-size: cover;
-      background-position: center;
+      width:100%; padding:90px 20px; text-align:center;
+      background:linear-gradient(135deg,#0f0f0f,#1a1a1a,#232323);
+      color:white;
+    }
+    header h1 { font-size:54px; font-weight:800; margin:0; }
+    header p { font-size:20px; margin-top:20px; opacity:0.85; }
+
+    .section { max-width:1150px; margin:100px auto; padding:0 20px; }
+    .title { text-align:center; font-size:38px; font-weight:700; margin-bottom:30px; }
+    .subtitle { text-align:center; opacity:0.7; margin-bottom:50px; }
+
+    /* CARD GRID */
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(320px,1fr));
+      gap:35px;
+    }
+    .card {
+      background:white; padding:40px; border-radius:18px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+      border:1px solid #ebebeb;
+    }
+    .card h3 { margin-top:0; font-size:26px; font-weight:700; }
+    .line {
+      width:60px; height:5px; background:#0d6efd;
+      border-radius:3px; margin:16px 0;
     }
 
-    header h1 {
-      font-size: 3rem;
-      font-weight: bold;
-      margin: 0;
-      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
-    }
-
-    header p {
-      font-size: 1.2rem;
-      color: #e0e0e0;
-    }
-
-    section {
-      max-width: 1000px;
-      margin: 60px auto;
-      padding: 20px;
-      text-align: center;
-    }
-
-    section img {
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .about {
-      background-color: #ffffff;
-      padding: 50px 20px;
-    }
-
-    .about h2 {
-      font-size: 2rem;
-      color: #20232a;
-    }
-
-    .about p {
-      font-size: 1.1rem;
-      color: #555;
-    }
-
-    .project {
-      background-color: #f9fafc;
-      padding: 50px 20px;
-    }
-
-    .project h2 {
-      font-size: 2rem;
-      color: #20232a;
-    }
-
-    .contact {
-      background-color: #20232a;
-      color: #fff;
-      padding: 50px 20px;
-    }
-
-    .contact h2 {
-      color: #61dafb;
+    .highlight {
+      background:linear-gradient(135deg,#eef4ff,#f7faff);
+      padding:100px 20px;
+      border-top:1px solid #dde6f7;
+      border-bottom:1px solid #dde6f7;
     }
 
     footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #111;
-      color: #888;
-      font-size: 0.9rem;
-    }
-
-    a.button {
-      display: inline-block;
-      background: #61dafb;
-      color: #20232a;
-      padding: 12px 25px;
-      border-radius: 8px;
-      margin-top: 15px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    a.button:hover {
-      background: #4ec3e0;
+      text-align:center; padding:55px 0;
+      background:#151515; color:#aaa; font-size:15px;
+      margin-top:120px;
     }
   </style>
 </head>
 <body>
+
+  <!-- HERO -->
   <header>
     <h1>CoreX AI</h1>
-    <p>From Data to Intelligence</p>
+    <p>AI 기반 시각지능 · 데이터 분석 · 자동화 솔루션 기업</p>
   </header>
 
-  <section class="about">
-    <h2>About Us</h2>
-    <img src="./images/about.jpg" alt="About CoreX AI" />
-    <p>
-      CoreX AI는 AI 기반 시각지능 솔루션 기업으로,<br />
-      데이터로부터 인사이트를 도출하고, 산업 현장에 실질적인 가치를 창출합니다.<br />
-      딥러닝, 비전 AI, 데이터 분석 등 다양한 기술을 융합해 더 나은 미래를 만듭니다.
-    </p>
+  <!-- ABOUT SECTION -->
+  <section class="section">
+    <div class="title">About CoreX AI</div>
+    <div class="subtitle">우리는 기술이 실제 산업 현장에서 작동하도록 설계합니다.</div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>AI Vision</h3>
+        <div class="line"></div>
+        객체 추적, 이미지 분석, 이상 패턴 감지 등 Vision 기반 솔루션을 개발합니다.
+      </div>
+
+      <div class="card">
+        <h3>Data Analytics</h3>
+        <div class="line"></div>
+        데이터 기반 의사결정 시스템과 자동 분석 파이프라인을 구축합니다.
+      </div>
+
+      <div class="card">
+        <h3>Automation</h3>
+        <div class="line"></div>
+        산업 환경에 특화된 자동화 및 실시간 AI 적용 기술을 제공합니다.
+      </div>
+    </div>
   </section>
 
-  <section class="project">
-    <h2>Projects</h2>
-    <img src="./images/beesave.jpg" alt="BeeSave Project" />
-    <p>
-      대표 프로젝트 <strong>BeeSave</strong>는 AI를 활용한 꿀벌 생태 보호 시스템입니다.<br />
-      실시간 객체 탐지 및 행동 분석을 통해 꿀벌 실종 문제를 예방합니다.
-    </p>
+  <!-- PROJECT SECTION -->
+  <section class="highlight">
+    <div class="section">
+      <div class="title">Projects</div>
+      <div class="subtitle">CoreX AI가 직접 해결하는 실제 문제들</div>
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>BeeSave</h3>
+          <div class="line"></div>
+          꿀벌 실종 예방을 위한 AI 비전 기반 객체 추적 및 이상행동 탐지 시스템.
+        </div>
+
+        <div class="card">
+          <h3>Illegal Site Detector</h3>
+          <div class="line"></div>
+          OCR + NLP 기반 불법 사이트 자동 탐지 및 차단 알고리즘.
+        </div>
+
+        <div class="card">
+          <h3>SmartFarm Vision</h3>
+          <div class="line"></div>
+          병해 탐지, 생육 모니터링, 센서 융합 기반 농업용 비전 시스템 개발.
+        </div>
+
+      </div>
+    </div>
   </section>
 
-  <section class="contact">
-    <h2>Contact</h2>
-    <p>문의 및 협업 제안은 아래 이메일로 연락해주세요.</p>
-    <a href="mailto:corexai01@gmail.com" class="button">Contact Us</a>
+  <!-- CONTACT -->
+  <section class="section">
+    <div class="title">Contact</div>
+    <div class="subtitle">협업 문의는 언제든 환영합니다</div>
+
+    <div class="card" style="max-width:620px; margin:0 auto; text-align:center;">
+      <h3>문의 이메일</h3>
+      <div class="line" style="margin:15px auto;"></div>
+      <p style="font-size:20px;">corexai01@gmail.com</p>
+    </div>
   </section>
 
   <footer>
-    © 2025 CoreX AI. All Rights Reserved.
+    © 2025 CoreX AI — All Rights Reserved.
   </footer>
+
 </body>
 </html>
