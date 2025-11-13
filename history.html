@@ -4,20 +4,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CoreX AI – 연혁 / 수상</title>
+
   <style>
     body { margin:0; font-family:'Pretendard',sans-serif; background:#f5f6f8; color:#222; overflow-x:hidden; }
 
+    /* NAVIGATION */
+    nav {
+      position:fixed;
+      top:0; left:0;
+      width:100%;
+      padding:16px 40px;
+      background:rgba(20,20,20,0.75);
+      backdrop-filter:blur(10px);
+      z-index:999;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    nav .logo img { height:34px; width:auto; }
+    nav .menu { display:flex; gap:28px; }
+    nav .menu a {
+      color:white; text-decoration:none;
+      font-size:16px; opacity:0.85;
+      transition:0.25s;
+    }
+    nav .menu a:hover { opacity:1; color:#87c8ff; }
+
+    /* HEADER */
     header {
-      width:100%; padding:110px 20px; text-align:center;
+      width:100%; padding:130px 20px 110px;
+      text-align:center;
       background:linear-gradient(135deg,#0c0c0c,#1a1a1a,#242424);
       color:white;
+      margin-top:70px;
     }
     header h1 { font-size:52px; font-weight:800; margin:0; }
     header p { margin-top:18px; opacity:0.8; font-size:20px; }
 
     .section { max-width:1100px; margin:90px auto; padding:0 20px; }
     .title { font-size:36px; font-weight:700; margin-bottom:25px; text-align:center; }
-    .timeline { border-left:4px solid #0d6efd; padding-left:30px; margin-top:50px; }
+
+    /* TIMELINE */
+    .timeline {
+      border-left:4px solid #0d6efd;
+      padding-left:30px;
+      margin-top:50px;
+    }
 
     .event { margin-bottom:45px; position:relative; }
     .event::before {
@@ -29,26 +61,54 @@
     .desc { font-size:17px; opacity:0.8; }
 
     /* AWARDS */
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; margin-top:50px; }
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+      margin-top:50px;
+    }
     .award {
       background:white; padding:30px; border-radius:18px;
-      border:1px solid #e0e0e0; box-shadow:0 8px 18px rgba(0,0,0,0.07);
+      border:1px solid #e0e0e0;
+      box-shadow:0 8px 18px rgba(0,0,0,0.07);
       text-align:center;
     }
     .award h3 { margin-top:5px; font-size:20px; }
 
     a.back {
-      display:block; width:200px; margin:0 auto; margin-top:80px;
+      display:block;
+      width:200px; margin:0 auto; margin-top:80px;
       text-align:center; padding:14px 0;
       background:#0d6efd; color:white; border-radius:10px;
       text-decoration:none; font-weight:600;
     }
     a.back:hover { background:#0b5ed7; }
 
-    footer { text-align:center; padding:60px 0; background:#151515; color:#aaa; margin-top:100px; }
+    footer {
+      text-align:center; padding:60px 0;
+      background:#151515; color:#aaa; margin-top:100px;
+    }
+
+    /* MOBILE FIX */
+    @media(max-width:600px){
+      header h1 { font-size:38px; }
+      .timeline { padding-left:20px; }
+      .event::before { left:-28px; }
+    }
   </style>
 </head>
 <body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="index.html" class="logo">
+    <img src="images/logo.png" alt="CoreX AI Logo">
+  </a>
+  <div class="menu">
+    <a href="index.html">Home</a>
+    <a href="history.html">연혁 / 수상</a>
+  </div>
+</nav>
 
 <header>
   <h1>CoreX AI – 연혁 & 수상</h1>
