@@ -25,7 +25,9 @@
       animation: fadeUp 1s forwards;
     }
 
-    /* HERO */
+    /* ============================
+                 HERO
+    ============================ */
     header {
       width: 100%;
       padding: 170px 20px 150px;
@@ -34,9 +36,10 @@
       background: linear-gradient(140deg, #0d0d0d, #101015, #171717);
       position: relative;
       overflow: hidden;
+      margin-top: 80px;
     }
 
-    /* Glow */
+    /* Glow animation */
     header::before {
       content: "";
       position: absolute;
@@ -51,7 +54,7 @@
       to   { transform: translateY(40px); opacity: 0.9; }
     }
 
-    header h1 {
+    header h2 {
       font-size: 62px;
       font-weight: 800;
       margin: 0;
@@ -72,7 +75,9 @@
       position: relative;
     }
 
-    /* SECTION */
+    /* ============================
+               SECTION
+    ============================ */
     .section {
       max-width: 1250px;
       margin: 140px auto;
@@ -91,9 +96,12 @@
       opacity: 0.7;
       margin-bottom: 60px;
       font-size: 18px;
+      line-height: 1.5;
     }
 
-    /* GRID */
+    /* ============================
+               GRID & CARD
+    ============================ */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
@@ -127,7 +135,15 @@
       border-radius: 4px;
     }
 
-    /* HIGHLIGHT */
+    .card p {
+      word-break: keep-all;
+      line-height: 1.55;
+      font-size: 17px;
+    }
+
+    /* ============================
+               HIGHLIGHT
+    ============================ */
     .highlight {
       background: linear-gradient(140deg, #e9f1ff, #f5f9ff);
       padding: 120px 20px;
@@ -135,7 +151,9 @@
       border-bottom: 1px solid #d2def3;
     }
 
-    /* FOOTER */
+    /* ============================
+                FOOTER
+    ============================ */
     footer {
       margin-top: 140px;
       padding: 60px 0;
@@ -145,7 +163,9 @@
       font-size: 15px;
     }
 
-    /* Scroll Animation */
+    /* ============================
+           SCROLL ANIMATION
+    ============================ */
     .scroll-animate {
       opacity: 0;
       transform: translateY(50px);
@@ -156,93 +176,97 @@
       transform: translateY(0);
     }
 
-/* ==============================
-   ULTRA MOBILE OPTIMIZATION
-============================== */
+    /* ============================
+       ULTRA MOBILE OPTIMIZATION
+    ============================ */
+    @media (max-width: 700px) {
 
-@media (max-width: 700px) {
+      body, .section {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
 
-  /* 좌우 여백 강제 통일 */
-  body, .section {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-  }
+      header {
+        padding: 130px 20px 100px !important;
+      }
 
-  /* 카드 폭 안정화 */
-  .grid {
-    width: 100%;
-    grid-template-columns: 1fr !important;
-    gap: 22px;
-  }
+      header h2 {
+        font-size: 32px !important;
+        line-height: 1.25;
+      }
 
-  .card {
-    padding: 22px 20px;
-    border-radius: 16px;
-    width: 100%;
-    box-sizing: border-box;
-  }
+      header p {
+        font-size: 16px;
+        line-height: 1.55;
+      }
 
-  /* 제목 크기 최적화 */
-  .card h3 {
-    font-size: 19px;
-    margin-bottom: 12px;
-  }
+      .title {
+        font-size: 28px;
+        margin-bottom: 12px;
+      }
 
-  /* 문장 스타일 완전히 정리 */
-  .card p {
-    font-size: 15px;
-    line-height: 1.52;
-    margin-top: 12px;
-    white-space: normal;
-    word-break: keep-all;
-  }
+      .subtitle {
+        font-size: 15px;
+        margin-bottom: 32px;
+        line-height: 1.45;
+      }
 
-  /* 문장 단락 간격 조정 */
-  .card p br {
-    margin-bottom: 5px;
-    display: block;
-    content: "";
-  }
+      .grid {
+        width: 100%;
+        grid-template-columns: 1fr !important;
+        gap: 22px;
+      }
 
-  /* SECTION 제목 */
-  .title {
-    font-size: 28px;
-    margin-bottom: 12px;
-  }
+      .card {
+        padding: 22px 20px;
+        border-radius: 16px;
+      }
 
-  .subtitle {
-    font-size: 15px;
-    line-height: 1.45;
-    margin-bottom: 32px;
-  }
+      .card h3 {
+        font-size: 19px;
+      }
 
-  /* HERO */
-  header {
-    padding: 130px 20px 100px !important;
-  }
+      .card p {
+        font-size: 15px;
+        line-height: 1.52;
+      }
 
-  header h1 {
-    font-size: 32px !important;
-    line-height: 1.25;
-  }
+      header::before {
+        filter: blur(45px);
+        animation-duration: 18s;
+      }
+    }
 
-  header p {
-    font-size: 16px;
-    line-height: 1.55;
-  }
+    @media (max-width: 480px) {
+      header h2 {
+        font-size: 26px !important;
+        line-height: 1.32;
+      }
 
-}
+      header p {
+        font-size: 15px;
+      }
 
+      .card {
+        padding: 20px;
+      }
 
+      .card h3 {
+        font-size: 18px;
+      }
+
+      .card p {
+        font-size: 14px;
+      }
+    }
 
   </style>
 </head>
 
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- NAVIGATION (shared) -->
   <div id="nav-placeholder"></div>
-
   <script>
     fetch("nav.html")
       .then(res => res.text())
@@ -252,7 +276,7 @@
   </script>
 
   <!-- HERO -->
-  <header style="margin-top: 80px;">
+  <header>
     <h2>코어엑스에이아이는</h2>
     <p>실험 기반 데이터 연구와 AI 개발을 통해 새로운 가치를 만듭니다</p>
   </header>
@@ -267,19 +291,19 @@
       <div class="card">
         <h3>Data Analytics</h3>
         <div class="line"></div>
-        문제를 구조적으로 이해하기 위한 데이터<br> 탐구 및 분석 기술
+        <p>문제를 구조적으로 이해하기 위한 데이터 탐구 및 분석 기술</p>
       </div>
 
       <div class="card">
         <h3>Vision AI</h3>
         <div class="line"></div>
-        이미지·영상에서 의미 있는 구조와 패턴을<br> 해석하는 시각지능 기술
+        <p>이미지·영상에서 의미 있는 구조와 패턴을 해석하는 시각지능 기술</p>
       </div>
 
       <div class="card">
         <h3>Automation</h3>
         <div class="line"></div>
-        AI 모델을 실제 환경과 시스템에 통합하는<br> 현장 적용 기술
+        <p>AI 모델을 실제 환경과 시스템에 통합하는 현장 적용 기술</p>
       </div>
 
     </div>
@@ -296,25 +320,31 @@
         <div class="card">
           <h3>Environmental AI</h3>
           <div class="line"></div>
-          AI 비전 객체 추적과 시계열 분석으로<br>
-          꿀벌 이상 행동·실종 패턴 탐지<br>
-          <span style="opacity:0.7;">농촌진흥청 실데이터 기반</span>
+          <p>
+            AI 비전 객체 추적과 시계열 분석으로<br>
+            꿀벌 이상 행동·실종 패턴 탐지<br>
+            <span style="opacity:0.7;">농촌진흥청 실데이터 기반</span>
+          </p>
         </div>
 
         <div class="card">
           <h3>Public Safety AI</h3>
           <div class="line"></div>
-          OCR·NLP 기반 유해 콘텐츠 분류<br>
-          불법·도박 사이트 자동 탐지 기술<br>
-          <span style="opacity:0.7;">대규모 데이터셋 구축</span>
+          <p>
+            OCR·NLP 기반 유해 콘텐츠 분류<br>
+            불법·도박 사이트 자동 탐지 기술<br>
+            <span style="opacity:0.7;">대규모 데이터셋 구축</span>
+          </p>
         </div>
 
         <div class="card">
           <h3>Research & Industry</h3>
           <div class="line"></div>
-          연구기관·공공 분야 데이터셋 구축 및<br>
-          맞춤형 AI 모델 개발<br>
-          <span style="opacity:0.7;">데이터→분석→모델링→고도화</span>
+          <p>
+            연구기관·공공 분야 데이터셋 구축 및<br>
+            맞춤형 AI 모델 개발<br>
+            <span style="opacity:0.7;">데이터→분석→모델링→고도화</span>
+          </p>
         </div>
 
       </div>
