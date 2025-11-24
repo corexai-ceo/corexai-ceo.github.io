@@ -1,186 +1,208 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-
-  <!-- PC 접속 시 자동 리다이렉트 -->
-  <script>
-    if (!/Mobile|Android|iPhone|iPad/i.test(navigator.userAgent)) {
-        window.location.href = "index.html";
-    }
-  </script>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Core X AI – Mobile</title>
 
   <style>
+    /* 기본 설정 */
     body {
       margin: 0;
       font-family: 'Pretendard', sans-serif;
       background: #f6f7fb;
       color: #222;
-      overflow-x: hidden;
-      padding-top: 80px; /* 네비게이션 공간 확보 */
+      overflow-x: hidden;           /* 우측 잘림 방지 */
+      box-sizing: border-box;
+    }
+
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+
+    /* 모바일 NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      padding: 12px 18px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      z-index: 999;
+    }
+
+    nav .logo img {
+      height: 34px;
+      width: auto;
+    }
+
+    .menu-btn {
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    /* 슬라이드 메뉴 */
+    .mobile-menu {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      width: 70%;
+      height: calc(100% - 60px);
+      background: white;
+      box-shadow: -4px 0 14px rgba(0,0,0,0.15);
+      transform: translateX(100%);
+      transition: 0.35s ease;
+      padding: 25px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      z-index: 998;
+    }
+
+    .mobile-menu a {
+      font-size: 18px;
+      text-decoration: none;
+      color: #111;
     }
 
     /* HERO */
     header {
-      width: 100%;
-      padding: 70px 20px 60px;
+      margin-top: 70px;
+      padding: 100px 20px 80px;
       text-align: center;
       color: white;
-      background: linear-gradient(140deg, #0d0d0d, #101015, #171717);
-      position: relative;
-      overflow: hidden;
-    }
-
-    header::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, #0047ff33, #00e4ff33);
-      filter: blur(55px);
+      background: linear-gradient(140deg, #0d0d0d, #151515, #1a1a1a);
     }
 
     header h2 {
-      font-size: 26px;
+      font-size: 27px;
       font-weight: 800;
-      line-height: 1.33;
+      line-height: 1.35;
       margin: 0;
-      z-index: 2;
-      position: relative;
+      padding: 0 10px;
     }
 
     header p {
+      margin-top: 18px;
       font-size: 15px;
-      margin-top: 16px;
-      opacity: 0.9;
+      opacity: 0.85;
       line-height: 1.55;
-      z-index: 2;
-      position: relative;
     }
 
     /* SECTION */
     .section {
       width: 100%;
-      max-width: 100%;
-      padding: 0 18px;
-      margin-top: 60px;
+      max-width: 600px;
+      margin: 70px auto;
+      padding: 0 22px;
     }
 
     .title {
-      text-align: center;
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 700;
-      margin-bottom: 12px;
+      text-align: center;
+      margin-bottom: 8px;
     }
 
     .subtitle {
       text-align: center;
-      font-size: 14px;
       opacity: 0.7;
+      font-size: 14px;
       line-height: 1.45;
       margin-bottom: 32px;
     }
 
-    /* CARD GRID */
-    .grid {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-      width: 100%;
-    }
-
     .card {
       background: white;
-      padding: 22px 20px;
-      border-radius: 16px;
+      padding: 20px 22px;
+      border-radius: 18px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      border: 1px solid #eee;
+      margin-bottom: 22px;
     }
 
     .card h3 {
+      margin: 0;
       font-size: 18px;
-      margin-top: 0;
-      margin-bottom: 10px;
     }
 
     .line {
-      width: 55px;
+      width: 50px;
       height: 4px;
       background: #0d6efd;
-      margin: 10px 0 14px;
       border-radius: 4px;
+      margin: 14px 0;
     }
 
     .card p {
+      margin: 0;
       font-size: 14px;
-      line-height: 1.52;
-      word-break: keep-all;
+      line-height: 1.55;
     }
 
-    /* HIGHLIGHT SECTION */
-.highlight {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  background: linear-gradient(140deg, #e9f1ff, #f5f9ff);
-  padding: 100px 20px !important;
-  border-top: 1px solid #d2def3;
-  border-bottom: 1px solid #d2def3;
-}
-
-    /* CONTACT CARD */
-    .contact-card {
-      text-align: center;
-      padding: 22px 20px;
-      border-radius: 16px;
-      background: white;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      border: 1px solid #eee;
-      max-width: 500px;
-      margin: 0 auto 40px;
+    /* Projects 배경 */
+    .highlight {
+      width: 100%;
+      background: linear-gradient(140deg, #eaf0ff, #f6f8ff);
+      padding: 60px 0;
+      margin: 70px 0;
     }
 
-    .contact-card p {
-      font-size: 18px;
-      margin-top: 6px;
-    }
-
+    /* CONTACT */
     footer {
-      margin-top: 50px;
-      padding: 40px 0;
       text-align: center;
-      font-size: 13px;
-      color: #777;
+      padding: 45px 0;
       background: #111;
+      color: #aaa;
+      font-size: 13px;
+      margin-top: 70px;
     }
   </style>
+
+  <script>
+    // PC에서는 index.html로 자동 이동
+    if (!/Mobile|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+      window.location.href = "index.html";
+    }
+
+    function toggleMenu() {
+      const m = document.getElementById("mobileMenu");
+      m.style.transform = m.style.transform === "translateX(0%)"
+        ? "translateX(100%)"
+        : "translateX(0%)";
+    }
+  </script>
+
 </head>
 
 <body>
 
-<!-- Mobile Navigation -->
-<div id="nav-placeholder"></div>
-<script>
-  fetch("mnav.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("nav-placeholder").innerHTML = data;
-    });
-</script>
+  <!-- NAV -->
+  <nav>
+    <a href="mindex.html" class="logo">
+      <img src="images/logo.png" />
+    </a>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  </nav>
 
-<!-- HERO -->
-<header>
-  <h2>코어엑스에이아이는</h2>
-  <p>실험 기반 데이터 연구와 AI 개발을 통해<br>새로운 가치를 만듭니다</p>
-</header>
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="mindex.html">Home</a>
+    <a href="mhistory.html">연혁/수상</a>
+  </div>
 
-<!-- ABOUT -->
-<section class="section">
-  <div class="title">About</div>
-  <div class="subtitle">복잡한 문제를 데이터로 해석하고, 실험을 통해 해답을 찾습니다</div>
+  <!-- HERO -->
+  <header>
+    <h2>코어엑스에이아이는</h2>
+    <p>실험 기반 데이터 연구와 AI 개발을 통해<br>새로운 가치를 만듭니다</p>
+  </header>
 
-  <div class="grid">
+  <!-- ABOUT -->
+  <section class="section">
+    <div class="title">About</div>
+    <div class="subtitle">복잡한 문제를 데이터로 해석하고 실험을 통해 해답을 찾습니다</div>
 
     <div class="card">
       <h3>Data Analytics</h3>
@@ -191,66 +213,57 @@
     <div class="card">
       <h3>Vision AI</h3>
       <div class="line"></div>
-      <p>이미지·영상에서 의미 있는 구조와 패턴을 해석하는 시각지능 기술</p>
+      <p>이미지·영상에서 의미 있는 패턴을 분석해 실시간으로 구조화하는 시각지능</p>
     </div>
 
     <div class="card">
       <h3>Automation</h3>
       <div class="line"></div>
-      <p>AI 모델을 실제 환경과 시스템에 통합하는 현장 적용 기술</p>
+      <p>AI 모델을 시스템과 통합하여 실제 환경에서 동작시키는 기술</p>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section class="highlight">
-  <div class="section">
-    <div class="title">Projects</div>
-    <div class="subtitle">Core X AI가 집중하는 연구 분야</div>
-
-    <div class="grid">
+  <!-- PROJECTS -->
+  <div class="highlight">
+    <section class="section">
+      <div class="title">Projects</div>
+      <div class="subtitle">Core X AI가 집중하는 연구 분야</div>
 
       <div class="card">
         <h3>Environmental AI</h3>
         <div class="line"></div>
-        <p>AI 비전 객체 추적 + 시계열 분석 기반  
-        <br>꿀벌 이상 행동 탐지</p>
+        <p>AI 객체 추적 + 시계열 분석 기반 꿀벌 이상 행동 탐지</p>
       </div>
 
       <div class="card">
         <h3>Public Safety AI</h3>
         <div class="line"></div>
-        <p>OCR·NLP 기반 유해 콘텐츠 분석  
-        <br>도박·불법 사이트 자동 탐지</p>
+        <p>OCR·NLP 기반 유해 콘텐츠 분석 및 자동 분류 시스템</p>
       </div>
 
       <div class="card">
         <h3>Research & Industry</h3>
         <div class="line"></div>
-        <p>공공기관·연구소 데이터셋 구축  
-        <br>맞춤형 AI 모델 개발</p>
+        <p>기관/연구소 데이터셋 구축 및 맞춤형 AI 모델 개발</p>
       </div>
+    </section>
+  </div>
 
+  <!-- CONTACT -->
+  <section class="section">
+    <div class="title">Contact</div>
+    <div class="subtitle">협업 문의</div>
+
+    <div class="card" style="text-align:center;">
+      <h3>문의 이메일</h3>
+      <div class="line" style="margin:12px auto;"></div>
+      <p style="font-size:17px;">corexai01@gmail.com</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CONTACT -->
-<section class="section">
-  <div class="title">Contact</div>
-  <div class="subtitle">협업 문의</div>
-
-  <div class="contact-card">
-    <h3>문의 이메일</h3>
-    <div class="line" style="margin:12px auto;"></div>
-    <p>corexai01@gmail.com</p>
-  </div>
-</section>
-
-<footer>
-  © 2025 Core X AI — All Rights Reserved.
-</footer>
+  <footer>
+    © 2025 Core X AI — All Rights Reserved.
+  </footer>
 
 </body>
 </html>
