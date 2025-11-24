@@ -97,7 +97,19 @@
       document.getElementById("nav-placeholder").innerHTML = data;
     });
 </script>
+<script>
+  document.addEventListener("click", function(e) {
+    const menuBtn = document.querySelector(".menu-btn");
+    const mobileMenu = document.getElementById("mobileMenu");
 
+    if (!menuBtn || !mobileMenu) return;
+
+    if (e.target === menuBtn) {
+      const isOpen = mobileMenu.style.transform === "translateX(0%)";
+      mobileMenu.style.transform = isOpen ? "translateX(100%)" : "translateX(0%)";
+    }
+  });
+</script>
 <!-- CONTENT -->
 <div class="history-wrap">
 
