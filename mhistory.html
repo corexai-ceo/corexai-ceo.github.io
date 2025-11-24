@@ -1,108 +1,150 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+
+  <!-- PC 접속 시 자동 리다이렉트 -->
+  <script>
+    if (!/Mobile|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+        window.location.href = "history.html";
+    }
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Core X AI – 연혁 / 수상 (모바일)</title>
+  <title>Core X AI – 연혁/수상 (Mobile)</title>
 
   <style>
     body {
       margin: 0;
       font-family: 'Pretendard', sans-serif;
-      background: #f7f8fb;
+      background: #f6f7fb;
       color: #222;
-      padding-top: 80px; /* nav 공간 확보 */
+      padding-top: 80px; /* 네비 공간 */
+      overflow-x: hidden;
     }
 
-    .history-section {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 20px 80px;
+    /* SECTION WRAPPER */
+    .history-wrap {
+      padding: 0 18px;
+      margin-top: 40px;
+      margin-bottom: 80px;
     }
 
     h1 {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 30px;
       text-align: center;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 25px;
     }
 
+    /* TIMELINE 기본 구조 */
     .timeline {
       border-left: 3px solid #0d6efd;
       padding-left: 20px;
+      margin-left: 10px;
     }
 
     .event {
-      margin-bottom: 40px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .event::before {
+      content: "";
+      position: absolute;
+      left: -11px;
+      top: 4px;
+      width: 11px;
+      height: 11px;
+      background: #0d6efd;
+      border-radius: 50%;
     }
 
     .event h3 {
-      font-size: 22px;
-      margin-bottom: 12px;
-      color: #0d6efd;
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
     }
 
     .event p {
-      font-size: 15px;
-      line-height: 1.55;
-      margin: 4px 0;
+      margin: 3px 0;
+      opacity: 0.8;
+      font-size: 14px;
+      line-height: 1.45;
       word-break: keep-all;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 35px 0;
+      text-align: center;
+      background: #111;
+      color: #aaa;
+      font-size: 13px;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- MOBILE NAVIGATION LOAD -->
-  <div id="nav-placeholder"></div>
-  <script>
-    fetch("mnav.html")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("nav-placeholder").innerHTML = data;
-      });
-  </script>
+<!-- Mobile Navigation -->
+<div id="nav-placeholder"></div>
+<script>
+  fetch("mnav.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("nav-placeholder").innerHTML = data;
+    });
+</script>
 
-  <!-- HISTORY CONTENT -->
-  <div class="history-section">
-    <h1>연혁 · 수상</h1>
+<!-- CONTENT -->
+<div class="history-wrap">
 
-    <div class="timeline">
+  <h1>연혁 · 수상</h1>
 
-      <div class="event">
-        <h3>2025</h3>
-        <p>ICT 이노베이션스퀘어 최우수 사례<br> 
-           과기부 장관상</p>
-        <p>농식품부 공공데이터 활용 경진대회 대상<br>
-           농림부 장관상</p>
-        <p>특허 출원 – 멀티모달 AI 유해사이트 탐지</p>
-        <p>공공기관용 불법 사이트 탐지 프로그램 개발</p>
-        <p>유해사이트 스코어링 기반 학술 연구</p>
-        <p>전북대학교 지능정보융합공학과 석사과정</p>
-      </div>
+  <div class="timeline">
 
-      <div class="event">
-        <h3>2024</h3>
-        <p>FastCampus Gala AI 서비스 부문 최우수상</p>
-        <p>특허 출원 – 이미지 기반 유해사이트 탐지</p>
-        <p>상표 출원 – CoreX AI</p>
-        <p>저작권 등록 – 유해사이트 자동 탐지 프로그램</p>
-      </div>
-
-      <div class="event">
-        <h3>2023</h3>
-        <p>전국 인공지능 아이디어 공모전<br>과기부 장관상</p>
-        <p>디지털 신기술 아이디어 공모전 – 대상</p>
-        <p>말벌·꿀벌 생태 AI 탐지 시스템 개발</p>
-      </div>
-
-      <div class="event">
-        <h3>2022</h3>
-        <p>AI 비전 기반 자동화 및 데이터 수집 연구</p>
-      </div>
-
+    <!-- 2025 -->
+    <div class="event">
+      <h3>2025</h3>
+      <p>ICT IS 최우수사례 과기부장관상</p>
+      <p>공공데이터 창업경진대회 농림부장관상</p>
+      <p>특허 출원 – 멀티모달 유해사이트 탐지</p>
+      <p>공공기관용 불법사이트 탐지 프로그램 개발</p>
+      <p>유해사이트 스코어링 기반 연구 진행</p>
+      <p>전북대 지능정보융합공학과 석사</p>
     </div>
+
+    <!-- 2024 -->
+    <div class="event">
+      <h3>2024</h3>
+      <p>FastCampus Gala AI 서비스부문 최우수상</p>
+      <p>특허 출원 – 이미지 기반 유해사이트 탐지</p>
+      <p>상표 출원 – CoreX AI</p>
+      <p>저작권 – 자동화 유해사이트 탐지 SW</p>
+    </div>
+
+    <!-- 2023 -->
+    <div class="event">
+      <h3>2023</h3>
+      <p>전국 인공지능 공모전 과기부 장관상</p>
+      <p>디지털 신기술 공모전 – 대상</p>
+      <p>말벌·꿀벌 생태 AI 탐지 R&D</p>
+    </div>
+
+    <!-- 2022 -->
+    <div class="event">
+      <h3>2022</h3>
+      <p>AI 비전 기반 자동화 연구 및 데이터 수집 시스템 구축</p>
+    </div>
+
   </div>
+</div>
+
+<footer>
+  © 2025 Core X AI — All Rights Reserved.
+</footer>
 
 </body>
 </html>
