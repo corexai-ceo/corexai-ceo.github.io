@@ -1,38 +1,106 @@
-<div class="history-section">
-  <h1>연혁 · 수상</h1>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>Core X AI – 연혁 / 수상 (모바일)</title>
 
-  <div class="timeline">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Pretendard', sans-serif;
+      background: #f7f8fb;
+      color: #222;
+      padding-top: 80px; /* nav 공간 확보 */
+    }
 
-    <div class="event">
-      <h3>2025</h3>
-      <p>ICT 이노베이션스퀘어 최우수 사례 · 과기정통부 장관상</p>
-      <p>농식품부 공공데이터 경진대회 대상 · 농림부 장관상</p>
-      <p>특허 출원 – 멀티모달 유해사이트 탐지</p>
-      <p>공공기관용 불법사이트 탐지 프로그램 개발</p>
-      <p>유해사이트 스코어링 학술 연구</p>
-      <p>전북대 지능정보융합공학과 석사과정</p>
+    .history-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .timeline {
+      border-left: 3px solid #0d6efd;
+      padding-left: 20px;
+    }
+
+    .event {
+      margin-bottom: 40px;
+    }
+
+    .event h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: #0d6efd;
+    }
+
+    .event p {
+      font-size: 15px;
+      line-height: 1.55;
+      margin: 4px 0;
+      word-break: keep-all;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MOBILE NAVIGATION LOAD -->
+  <div id="nav-placeholder"></div>
+  <script>
+    fetch("mnav.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("nav-placeholder").innerHTML = data;
+      });
+  </script>
+
+  <!-- HISTORY CONTENT -->
+  <div class="history-section">
+    <h1>연혁 · 수상</h1>
+
+    <div class="timeline">
+
+      <div class="event">
+        <h3>2025</h3>
+        <p>ICT 이노베이션스퀘어 최우수 사례 – 과기부 장관상</p>
+        <p>농식품부 공공데이터 활용 경진대회 대상 – 농림부 장관상</p>
+        <p>특허 출원 – 멀티모달 AI 기반 유해사이트 탐지</p>
+        <p>공공기관용 불법 사이트 탐지 프로그램 개발</p>
+        <p>유해사이트 스코어링 기반 학술 연구</p>
+        <p>전북대학교 지능정보융합공학과 석사과정</p>
+      </div>
+
+      <div class="event">
+        <h3>2024</h3>
+        <p>FastCampus Gala AI 서비스 부문 최우수상</p>
+        <p>특허 출원 – 이미지 기반 유해사이트 탐지</p>
+        <p>상표 출원 – CoreX AI</p>
+        <p>저작권 등록 – 자동화 탐지 프로그램</p>
+      </div>
+
+      <div class="event">
+        <h3>2023</h3>
+        <p>전국 인공지능 아이디어 공모전 – 과기부 장관상</p>
+        <p>디지털 신기술 아이디어 공모전 – 대상</p>
+        <p>말벌·꿀벌 생태 AI 탐지 시스템 개발</p>
+      </div>
+
+      <div class="event">
+        <h3>2022</h3>
+        <p>AI 비전 기반 자동화 및 데이터 수집 연구 수행</p>
+      </div>
+
     </div>
-
-    <div class="event">
-      <h3>2024</h3>
-      <p>FastCampus Gala AI 서비스 부문 최우수상</p>
-      <p>특허 출원 – 이미지 기반 유해사이트 탐지</p>
-      <p>상표 출원 – CoreX AI</p>
-      <p>저작권 등록 – 자동화 탐지 프로그램</p>
-    </div>
-
-    <div class="event">
-      <h3>2023</h3>
-      <p>AI 아이디어 공모전 – 과기정통부 장관상</p>
-      <p>말벌 탐지 시스템 개발</p>
-      <p>디지털 신기술 공모전 – 대상</p>
-      <p>엣지 기반 AI 말벌 탐지·알림 시스템</p>
-    </div>
-
-    <div class="event">
-      <h3>2022</h3>
-      <p>AI 비전 기반 자동화 및 데이터 수집 연구</p>
-    </div>
-
   </div>
-</div>
+
+</body>
+</html>
