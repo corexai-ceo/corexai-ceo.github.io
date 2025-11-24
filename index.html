@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   <title>Core X AI</title>
 
   <style>
@@ -15,7 +15,6 @@
       overflow-x: hidden;
     }
 
-
     /* Fade-in animation */
     @keyframes fadeUp {
       from { opacity:0; transform:translateY(40px); }
@@ -26,9 +25,7 @@
       animation: fadeUp 1s forwards;
     }
 
-    /* =================================
-                HERO
-    ================================= */
+    /* HERO */
     header {
       width: 100%;
       padding: 170px 20px 150px;
@@ -39,7 +36,7 @@
       overflow: hidden;
     }
 
-    /* AI Glow Motion */
+    /* Glow */
     header::before {
       content: "";
       position: absolute;
@@ -57,27 +54,25 @@
     header h1 {
       font-size: 62px;
       font-weight: 800;
-      letter-spacing: -1px;
       margin: 0;
-      position: relative;
+      letter-spacing: -1px;
       z-index: 2;
+      position: relative;
     }
 
     header p {
       font-size: 23px;
       margin-top: 28px;
       opacity: 0.9;
-      max-width: 750px;
+      max-width: 760px;
       margin-left: auto;
       margin-right: auto;
       line-height: 1.7;
-      position: relative;
       z-index: 2;
+      position: relative;
     }
 
-    /* =================================
-                SECTION STYLE
-    ================================= */
+    /* SECTION */
     .section {
       max-width: 1250px;
       margin: 140px auto;
@@ -98,9 +93,7 @@
       font-size: 18px;
     }
 
-    /* =================================
-                CARD GRID
-    ================================= */
+    /* GRID */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
@@ -111,15 +104,14 @@
       background: white;
       padding: 45px;
       border-radius: 22px;
-      box-shadow: 0 15px 32px rgba(0,0,0,0.08);
+      box-shadow: 0 15px 32px rgba(0, 0, 0, 0.08);
       border: 1px solid #e8e8e8;
       transition: 0.35s ease;
-      transform: translateY(0);
     }
 
     .card:hover {
       transform: translateY(-14px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.16);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.16);
     }
 
     .card h3 {
@@ -135,9 +127,7 @@
       border-radius: 4px;
     }
 
-    /* =================================
-                HIGHLIGHT SECTION
-    ================================= */
+    /* HIGHLIGHT */
     .highlight {
       background: linear-gradient(140deg, #e9f1ff, #f5f9ff);
       padding: 120px 20px;
@@ -145,9 +135,7 @@
       border-bottom: 1px solid #d2def3;
     }
 
-    /* =================================
-                FOOTER
-    ================================= */
+    /* FOOTER */
     footer {
       margin-top: 140px;
       padding: 60px 0;
@@ -157,30 +145,86 @@
       font-size: 15px;
     }
 
-    /* =================================
-                SCROLL ANIMATION
-    ================================= */
+    /* Scroll Animation */
     .scroll-animate {
       opacity: 0;
       transform: translateY(50px);
       transition: all 0.85s ease;
     }
-
     .scroll-animate.active {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* =================================
-                MOBILE FIX
-    ================================= */
-    @media (max-width: 600px) {
-      nav { padding: 14px 20px; }
-      nav .menu { gap: 16px; }
-      nav .menu a { font-size: 15px; }
+    /* ==============================
+        MOBILE OPTIMIZATION
+    ============================== */
+    @media (max-width: 900px) {
+      header h1 {
+        font-size: 44px;
+        line-height: 1.25;
+      }
 
-      header h1 { font-size: 40px; }
-      header p  { font-size: 18px; }
+      header p {
+        font-size: 18px;
+        line-height: 1.6;
+        padding: 0 10px;
+      }
+
+      .section {
+        margin: 90px auto;
+      }
+
+      .title {
+        font-size: 32px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+        margin-bottom: 40px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr !important;
+        gap: 28px;
+      }
+
+      .card {
+        padding: 32px;
+        border-radius: 18px;
+      }
+
+      .card h3 {
+        font-size: 24px;
+      }
+
+      header {
+        padding: 150px 20px 110px;
+      }
+
+      header::before {
+        filter: blur(50px); /* 모바일 성능 보완 */
+        animation-duration: 18s;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 34px;
+        letter-spacing: -0.5px;
+      }
+
+      header p {
+        font-size: 16px;
+      }
+
+      .card {
+        padding: 26px;
+      }
+
+      .line {
+        width: 55px;
+      }
     }
   </style>
 </head>
@@ -188,85 +232,85 @@
 <body>
 
   <!-- NAVIGATION -->
-<div id="nav-placeholder"></div>
+  <div id="nav-placeholder"></div>
 
-<script>
-  fetch("nav.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("nav-placeholder").innerHTML = data;
-    });
-</script>
+  <script>
+    fetch("nav.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("nav-placeholder").innerHTML = data;
+      });
+  </script>
+
   <!-- HERO -->
   <header style="margin-top: 80px;">
     <h1>코어엑스에이아이는</h1>
     <p>실험 기반 데이터 연구와 AI 개발을 통해 새로운 가치를 만듭니다</p>
   </header>
 
-  <!-- ABOUT SECTION -->
+  <!-- ABOUT -->
   <section class="section scroll-animate">
     <div class="title">About Core X AI</div>
     <div class="subtitle">우리는 복잡한 문제를 데이터로 해석하고, 실험을 통해 정답을 찾아갑니다</div>
 
-<div class="grid">
-
-  <div class="card">
-    <h3>Data Analytics</h3>
-    <div class="line"></div>
-    문제를 구조적으로 이해하기 위한 데이터<br> 탐구 및 분석 기술.
-  </div>
-
-  <div class="card">
-    <h3>Vision AI</h3>
-    <div class="line"></div>
-    이미지·영상에서 의미 있는 구조와 패턴을<br> 해석하는 시각지능 기술.
-  </div>
-
-  <div class="card">
-    <h3>Automation</h3>
-    <div class="line"></div>
-    AI 모델을 실제 환경과 시스템에 통합하는<br> 현장 적용 기술.
-  </div>
-
-</div>
-<section class="highlight scroll-animate">
-  <div class="section">
-    <div class="title">Projects</div>
-    <div class="subtitle">CoreX AI가 집중하는 연구·기술 분야</div>
-
     <div class="grid">
 
-<!-- 환경 분야 -->
-<div class="card">
-  <h3>Environmental AI</h3>
-  <div class="line"></div>
-  AI 비전 객체 추적과 시계열 분석으로<br>
-  꿀벌의 이상 행동·실종 패턴을<br> 조기 탐지하는 환경 보호 기술<br>
-  <span style="opacity:0.7;">농촌진흥청 실데이터 기반 모델 구축</span>
-</div>
+      <div class="card">
+        <h3>Data Analytics</h3>
+        <div class="line"></div>
+        문제를 구조적으로 이해하기 위한 데이터<br> 탐구 및 분석 기술
+      </div>
 
-<!-- 사회 분야 -->
-<div class="card">
-  <h3>Public Safety AI</h3>
-  <div class="line"></div>
-  OCR·NLP 기반 콘텐츠 분석으로<br>
-  불법·유해 사이트를 자동 탐지하는<br> 공공 안전 AI 기술<br>
-  <span style="opacity:0.7;">대규모 데이터셋 구축</span>
-</div>
+      <div class="card">
+        <h3>Vision AI</h3>
+        <div class="line"></div>
+        이미지·영상에서 의미 있는 구조와 패턴을<br> 해석하는 시각지능 기술
+      </div>
 
-<!-- 학술·산업 연구 분야 -->
-<div class="card">
-  <h3>Research & Industry</h3>
-  <div class="line"></div>
-  연구·공공 분야에 필요한 데이터셋 구축<br>
-  맞춤형 AI 모델 설계 기술 수행<br>
-  <span style="opacity:0.7;">데이터 확보·분석·모델링·고도화</span>
-</div>
-
+      <div class="card">
+        <h3>Automation</h3>
+        <div class="line"></div>
+        AI 모델을 실제 환경과 시스템에 통합하는<br> 현장 적용 기술
+      </div>
 
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="highlight scroll-animate">
+    <div class="section">
+      <div class="title">Projects</div>
+      <div class="subtitle">CoreX AI가 집중하는 연구·기술 분야</div>
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>Environmental AI</h3>
+          <div class="line"></div>
+          AI 비전 객체 추적과 시계열 분석으로<br>
+          꿀벌 이상 행동·실종 패턴 탐지<br>
+          <span style="opacity:0.7;">농촌진흥청 실데이터 기반</span>
+        </div>
+
+        <div class="card">
+          <h3>Public Safety AI</h3>
+          <div class="line"></div>
+          OCR·NLP 기반 유해 콘텐츠 분류<br>
+          불법·도박 사이트 자동 탐지 기술<br>
+          <span style="opacity:0.7;">대규모 데이터셋 구축</span>
+        </div>
+
+        <div class="card">
+          <h3>Research & Industry</h3>
+          <div class="line"></div>
+          연구기관·공공 분야 데이터셋 구축 및<br>
+          맞춤형 AI 모델 개발<br>
+          <span style="opacity:0.7;">데이터→분석→모델링→고도화</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- CONTACT -->
   <section class="section scroll-animate">
@@ -285,7 +329,6 @@
   </footer>
 
   <script>
-    /* Scroll Animation */
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('active');
