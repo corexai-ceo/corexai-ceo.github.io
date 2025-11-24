@@ -3,43 +3,55 @@
     position: fixed;
     top: 0; left: 0;
     width: 100%;
-    padding: 14px 18px;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding: 16px 20px;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(12px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 999;
+    z-index: 9999;
+    transition: padding 0.28s ease, background 0.28s ease;
   }
 
+  /* 스크롤 시 축소된 네비바 */
+  nav.shrink {
+    padding: 8px 16px; /* 절반 사이즈로 축소 */
+    background: rgba(0, 0, 0, 0.55);
+  }
+
+  /* 로고 */
   nav .logo img {
-    max-height: 55px;
+    height: 36px;
     width: auto;
+    transition: height 0.25s ease;
   }
 
+  nav.shrink .logo img {
+    height: 28px; /* 로고 축소 */
+  }
+
+  /* 메뉴 */
   nav .menu {
     display: flex;
-    gap: 18px;
+    gap: 22px;
   }
 
   nav .menu a {
-    color: #ffffff;
+    color: white;
+    font-size: 14px;
     text-decoration: none;
-    font-size: 15px;
+    opacity: 0.9;
+    white-space: nowrap;
+    transition: font-size 0.25s ease, opacity 0.25s ease;
+  }
+
+  nav.shrink .menu a {
+    font-size: 13px; /* 글자 살짝 축소 */
     opacity: 0.85;
-    padding: 6px 6px;
-    transition: 0.25s;
   }
-
-  nav .menu a:active {
-    opacity: 1;
-    color: #7fc8ff;
-  }
-
 </style>
 
-<nav>
+<nav id="mobile-nav">
   <a href="mindex.html" class="logo">
     <img src="images/logo.png" alt="CoreX AI Logo">
   </a>
@@ -49,3 +61,15 @@
     <a href="mhistory.html">연혁/수상</a>
   </div>
 </nav>
+
+<script>
+  const nav = document.getElementById("mobile-nav");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 10) {
+      nav.classList.add("shrink");
+    } else {
+      nav.classList.remove("shrink");
+    }
+  });
+</script>
