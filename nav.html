@@ -1,0 +1,57 @@
+<style>
+  nav {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    padding: 18px 45px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+  }
+
+  nav .logo img {
+    max-height: 80px;
+    width: auto;
+  }
+
+  nav .menu {
+    display: flex;
+    gap: 30px; /* 균형 잡힌 간격 */
+    margin-right: 50px; /* 오른쪽 너무 붙지 않게 */
+  }
+
+  nav .menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    opacity: 0.85;
+    transition: 0.25s;
+    padding: 6px 8px;
+  }
+
+  nav .menu a:hover {
+    opacity: 1;
+    color: #87c8ff;
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 14px 20px; }
+    nav .menu { gap: 16px; margin-right: 10px; }
+    nav .menu a { font-size: 15px; }
+  }
+</style>
+
+<nav>
+  <a href="index.html" class="logo">
+    <img src="images/logo.png" alt="CoreX AI Logo">
+  </a>
+
+  <div class="menu">
+    <a href="index.html">Home</a>
+    <a href="history.html">연혁/수상</a>
+  </div>
+</nav>
