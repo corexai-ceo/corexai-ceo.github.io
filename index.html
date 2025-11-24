@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <script>
-if (window.innerWidth < 700) {
-    window.location.href = "mindex.html";
+<script>
+if (/Mobile|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+    window.location.href = "mindex.html?v=1";
 }
 </script>
   <meta charset="UTF-8" />
