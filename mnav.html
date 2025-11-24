@@ -1,61 +1,52 @@
 <style>
+  body { margin:0; }
+
   nav {
     position: fixed;
     top: 0; left: 0;
     width: 100%;
-    padding: 16px 20px;
-    background: rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(12px);
+    padding: 18px 20px;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(14px);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 9999;
-    transition: padding 0.28s ease, background 0.28s ease;
+    transition: padding 0.25s ease, background 0.25s ease;
   }
 
-  /* 스크롤 시 축소된 네비바 */
-  nav.shrink {
-    padding: 8px 16px; /* 절반 사이즈로 축소 */
-    background: rgba(0, 0, 0, 0.55);
+  /* 스크롤시 축소 */
+  nav.scrolled {
+    padding: 8px 18px;
+    background: rgba(255,255,255,0.95);
   }
 
-  /* 로고 */
-  nav .logo img {
-    height: 36px;
-    width: auto;
+  .logo img {
+    height: 48px;
     transition: height 0.25s ease;
   }
 
-  nav.shrink .logo img {
-    height: 28px; /* 로고 축소 */
+  nav.scrolled .logo img {
+    height: 36px;
   }
 
-  /* 메뉴 */
-  nav .menu {
+  .menu {
     display: flex;
-    gap: 22px;
+    gap: 18px;
   }
 
-  nav .menu a {
-    color: white;
-    font-size: 14px;
+  .menu a {
+    color: #222;
+    font-size: 15px;
     text-decoration: none;
-    opacity: 0.9;
-    white-space: nowrap;
-    transition: font-size 0.25s ease, opacity 0.25s ease;
-  }
-
-  nav.shrink .menu a {
-    font-size: 13px; /* 글자 살짝 축소 */
     opacity: 0.85;
   }
 </style>
 
-<nav id="mobile-nav">
+<nav id="mnav">
   <a href="mindex.html" class="logo">
-    <img src="images/logo.png" alt="CoreX AI Logo">
+    <img src="images/logo.png">
   </a>
-
   <div class="menu">
     <a href="mindex.html">Home</a>
     <a href="mhistory.html">연혁/수상</a>
@@ -63,13 +54,9 @@
 </nav>
 
 <script>
-  const nav = document.getElementById("mobile-nav");
-
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 10) {
-      nav.classList.add("shrink");
-    } else {
-      nav.classList.remove("shrink");
-    }
+    const nav = document.getElementById("mnav");
+    if (window.scrollY > 10) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
   });
 </script>
