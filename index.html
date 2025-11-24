@@ -6,113 +6,220 @@
   <title>CoreX AI</title>
 
   <style>
-    body { margin:0; font-family:'Pretendard',sans-serif; background:#f5f6f8; color:#222; overflow-x:hidden; }
-
-    /* NAVIGATION */
-    nav {
-      position:fixed;
-      top:0; left:0;
-      width:100%;
-      padding:16px 40px;
-      background:rgba(20,20,20,0.75);
-      backdrop-filter:blur(10px);
-      z-index:999;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+    /* General Reset */
+    body {
+      margin: 0;
+      font-family: 'Pretendard', sans-serif;
+      background: #f6f7fb;
+      color: #222;
+      overflow-x: hidden;
     }
 
-nav .logo img {
-  max-height:80px;
-  width:auto;
-}
+    /* ==============================
+        NAVIGATION (Glass UI)
+    ============================== */
+    nav {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      padding: 18px 45px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo img {
+      max-height: 80px;
+      width: auto;
+    }
 
     nav .menu {
-      display:flex;
-      gap:28px;
+      display: flex;
+      gap: 32px;
     }
 
     nav .menu a {
-      color:white;
-      text-decoration:none;
-      font-size:16px;
-      opacity:0.85;
-      transition:0.25s;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      opacity: 0.85;
+      transition: 0.25s;
     }
 
     nav .menu a:hover {
-      opacity:1;
-      color:#87c8ff;
+      opacity: 1;
+      color: #87c8ff;
     }
 
-    /* Fade-in animation */
-    @keyframes fadeUp {
-      from { opacity:0; transform:translateY(40px); }
-      to { opacity:1; transform:translateY(0); }
-    }
-    .fade { opacity:0; animation: fadeUp 1s forwards; }
-
-    /* HERO */
+    /* ==============================
+        HERO SECTION
+    ============================== */
     header {
-      width:100%; padding:120px 20px; text-align:center;
-      background:linear-gradient(135deg,#0c0c0c,#1a1a1a,#252525);
-      color:white; position:relative; overflow:hidden;
+      width: 100%;
+      padding: 170px 20px 150px;
+      text-align: center;
+      color: white;
+      background: linear-gradient(140deg, #0d0d0d, #101015, #171717);
+      position: relative;
+      overflow: hidden;
     }
-    header::after{
-      content:""; position:absolute; inset:0; pointer-events:none;
-      background:radial-gradient(circle at 50% 30%, rgba(255,255,255,0.07), transparent 70%);
-      animation:pulse 6s infinite alternate;
-    }
-    @keyframes pulse{
-      from{opacity:0.4;} to{opacity:0.9;}
-    }
-    header h1 { font-size:58px; font-weight:800; margin:0; }
-    header p { font-size:22px; margin-top:22px; opacity:0.85; }
 
-    .section { max-width:1150px; margin:100px auto; padding:0 20px; }
-    .title { text-align:center; font-size:40px; font-weight:700; margin-bottom:30px; }
-    .subtitle { text-align:center; opacity:0.7; margin-bottom:50px; }
+    /* AI Glow Motion */
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, #0047ff33, #00e4ff33);
+      filter: blur(90px);
+      animation: moveGlow 14s infinite alternate ease-in-out;
+    }
 
-    /* CARD GRID */
+    @keyframes moveGlow {
+      from { transform: translateY(-40px); opacity: 0.5; }
+      to   { transform: translateY(40px); opacity: 0.9; }
+    }
+
+    header h1 {
+      font-size: 62px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin: 0;
+      z-index: 2;
+      position: relative;
+    }
+
+    header p {
+      font-size: 23px;
+      margin-top: 28px;
+      opacity: 0.9;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+      z-index: 2;
+      position: relative;
+    }
+
+    /* ==============================
+        SECTION DEFAULT STYLE
+    ============================== */
+    .section {
+      max-width: 1250px;
+      margin: 140px auto;
+      padding: 0 20px;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 44px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      text-align: center;
+      opacity: 0.7;
+      margin-bottom: 60px;
+      font-size: 18px;
+    }
+
+    /* ==============================
+        CARD GRID
+    ============================== */
     .grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(320px,1fr));
-      gap:40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 45px;
     }
+
     .card {
-      background:white; padding:45px; border-radius:20px;
-      box-shadow:0 12px 28px rgba(0,0,0,0.08);
-      border:1px solid #ebebeb;
-      transition:0.3s ease; transform:translateY(0);
+      background: white;
+      padding: 45px;
+      border-radius: 22px;
+      box-shadow: 0 15px 32px rgba(0,0,0,0.08);
+      border: 1px solid #e8e8e8;
+      transition: 0.35s ease;
+      transform: translateY(0);
     }
-    .card:hover { transform:translateY(-10px); box-shadow:0 18px 32px rgba(0,0,0,0.13); }
-    .card h3 { margin-top:0; font-size:26px; font-weight:700; }
-    .line { width:65px; height:5px; background:#0d6efd; border-radius:3px; margin:18px 0; }
 
+    .card:hover {
+      transform: translateY(-14px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.16);
+    }
+
+    .card h3 {
+      font-size: 28px;
+      margin-top: 0;
+    }
+
+    .line {
+      width: 70px;
+      height: 5px;
+      background: #0d6efd;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+
+    /* ==============================
+        FULL-WIDTH HIGHLIGHT SECTION
+    ============================== */
     .highlight {
-      background:linear-gradient(135deg,#e6eeff,#f4f8ff);
-      padding:110px 20px;
-      border-top:1px solid #d5e0f7;
-      border-bottom:1px solid #d5e0f7;
+      background: linear-gradient(140deg, #e9f1ff, #f5f9ff);
+      padding: 120px 20px;
+      border-top: 1px solid #d2def3;
+      border-bottom: 1px solid #d2def3;
     }
 
+    /* ==============================
+        CONTACT CARD
+    ============================== */
     footer {
-      text-align:center; padding:60px 0;
-      background:#151515; color:#aaa; font-size:15px;
-      margin-top:120px;
+      margin-top: 140px;
+      padding: 60px 0;
+      text-align: center;
+      background: #111;
+      color: #aaa;
+      font-size: 15px;
     }
 
-    /* Scroll animation */
-    .scroll-animate { opacity:0; transform:translateY(40px); transition:all 0.8s ease; }
-    .scroll-animate.active { opacity:1; transform:translateY(0); }
+    /* ==============================
+        SCROLL ANIMATION
+    ============================== */
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.85s ease;
+    }
+
+    .scroll-animate.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==============================
+        MOBILE RESPONSIVE
+    ============================== */
+    @media (max-width: 600px) {
+      header h1 { font-size: 40px; }
+      header p { font-size: 18px; }
+
+      nav { padding: 12px 20px; }
+      nav .logo img { max-height: 60px; }
+    }
+
   </style>
 </head>
+
 <body>
 
   <!-- NAVIGATION -->
   <nav>
     <a href="index.html" class="logo">
-      <img src="images/logo.png" alt="CoreX AI Logo">
+      <img src="images/logo.png" alt="CoreX AI Logo" />
     </a>
 
     <div class="menu">
@@ -122,12 +229,12 @@ nav .logo img {
   </nav>
 
   <!-- HERO -->
-  <header class="fade" style="margin-top:80px;">
-    <h1>코어엑스에이아이,</h1>
+  <header class="fade" style="margin-top: 80px;">
+    <h1>CoreX AI</h1>
     <p>실시간 분석과 맞춤형 인공지능으로 산업 현장에 최적화된 AI 솔루션을 제공합니다.</p>
   </header>
 
-  <!-- ABOUT -->
+  <!-- ABOUT SECTION -->
   <section class="section scroll-animate">
     <div class="title">About CoreX AI</div>
     <div class="subtitle">우리는 기술이 실제 산업 현장에서 작동하도록 설계합니다.</div>
@@ -136,13 +243,13 @@ nav .logo img {
       <div class="card">
         <h3>AI Vision</h3>
         <div class="line"></div>
-        객체 추적, 이미지 분석, 이상 패턴 감지 등 Vision 기반 솔루션을 개발합니다.
+        객체 추적, 이미지 분석, 이상행동 감지 등의 Vision 기반 인공지능 기술을 개발합니다.
       </div>
 
       <div class="card">
         <h3>Data Analytics</h3>
         <div class="line"></div>
-        데이터 기반 의사결정 시스템과 자동 분석 파이프라인을 구축합니다.
+        현장에서 수집된 데이터를 기반으로 자동 분석 및 의사결정 시스템을 구축합니다.
       </div>
 
       <div class="card">
@@ -157,7 +264,7 @@ nav .logo img {
   <section class="highlight scroll-animate">
     <div class="section">
       <div class="title">Projects</div>
-      <div class="subtitle">CoreX AI가 직접 해결하는 실제 문제들</div>
+      <div class="subtitle">CoreX AI가 해결하는 실제 문제들</div>
 
       <div class="grid">
         <div class="card">
@@ -186,10 +293,10 @@ nav .logo img {
     <div class="title">Contact</div>
     <div class="subtitle">협업 문의는 언제든 환영합니다</div>
 
-    <div class="card" style="max-width:620px; margin:0 auto; text-align:center;">
+    <div class="card" style="max-width:650px; margin:0 auto; text-align:center;">
       <h3>문의 이메일</h3>
       <div class="line" style="margin:15px auto;"></div>
-      <p style="font-size:20px;">corexai01@gmail.com</p>
+      <p style="font-size:21px;">corexai01@gmail.com</p>
     </div>
   </section>
 
@@ -197,15 +304,16 @@ nav .logo img {
     © 2025 CoreX AI — All Rights Reserved.
   </footer>
 
-<script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('active');
-    });
-  }, { threshold:0.15 });
+  <script>
+    /* Scroll Animation */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('active');
+      });
+    }, { threshold: 0.15 });
 
-  document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
-</script>
+    document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
