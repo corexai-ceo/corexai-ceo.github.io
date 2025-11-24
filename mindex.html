@@ -144,6 +144,15 @@
 </head>
 
 <body>
+  <div id="nav-placeholder"></div>
+
+<script>
+  fetch("mnav.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("nav-placeholder").innerHTML = data;
+    });
+</script>
 
   <!-- NAVIGATION -->
   <div id="nav-placeholder"></div>
