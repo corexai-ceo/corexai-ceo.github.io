@@ -1,59 +1,51 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+  nav {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+  }
 
-  <style>
-    nav {
-      width: 100%;
-      padding: 16px 20px;
-      background: rgba(20, 20, 20, 0.85);
-      backdrop-filter: blur(10px);
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 999;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  nav .logo img {
+    max-height: 55px;
+    width: auto;
+  }
 
-    nav .logo img {
-      height: 38px;
-      width: auto;
-    }
+  nav .menu {
+    display: flex;
+    gap: 18px;
+  }
 
-    nav .menu {
-      display: flex;
-      gap: 18px;
-    }
+  nav .menu a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    opacity: 0.85;
+    padding: 6px 6px;
+    transition: 0.25s;
+  }
 
-    nav .menu a {
-      color: white;
-      text-decoration: none;
-      font-size: 15px;
-      opacity: 0.85;
-      transition: 0.25s;
-    }
+  nav .menu a:active {
+    opacity: 1;
+    color: #7fc8ff;
+  }
 
-    nav .menu a:hover {
-      opacity: 1;
-      color: #70b8ff;
-    }
-  </style>
-</head>
+</style>
 
-<body>
-  <nav>
-    <a href="mindex.html" class="logo">
-      <img src="images/logo.png" alt="CoreX AI Logo">
-    </a>
+<nav>
+  <a href="mindex.html" class="logo">
+    <img src="images/logo.png" alt="CoreX AI Logo">
+  </a>
 
-    <div class="menu">
-      <a href="mindex.html">Home</a>
-      <a href="mhistory.html">연혁 / 수상</a>
-    </div>
-  </nav>
-</body>
-</html>
+  <div class="menu">
+    <a href="mindex.html">Home</a>
+    <a href="mhistory.html">연혁/수상</a>
+  </div>
+</nav>
