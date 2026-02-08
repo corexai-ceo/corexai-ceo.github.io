@@ -81,3 +81,16 @@ function getRiskLevel(score) {
   }
   return { label: "낮음", color: "#27ae60" };
 }
+
+/* =====================
+   AI 판단 근거 생성
+===================== */
+function generateAIDecisionReason(score) {
+  if (score >= 70) {
+    return "도메인 생성 패턴, 구조적 특성 및 기존 유해사이트 학습 데이터와의 유사도가 높게 나타났습니다.";
+  }
+  if (score >= 40) {
+    return "일부 위험 패턴이 탐지되었으나, 명확한 유해성 판단을 위해 추가 분석이 필요한 상태입니다.";
+  }
+  return "현재까지 분석된 패턴에서는 유해 위험 신호가 낮은 것으로 판단됩니다.";
+}
