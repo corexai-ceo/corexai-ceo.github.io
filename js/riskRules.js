@@ -1,5 +1,5 @@
 /* ===============================
-   Core X AI - Risk Rule Engine v1.1
+   Core X AI - Risk Rule Engine v1.2
    Domain Pattern + Keyword Hybrid
    =============================== */
 
@@ -33,23 +33,17 @@ function calculateRiskScore(input) {
   /* =====================
      2. 숫자 포함 여부
   ===================== */
-  if (/\d/.test(text)) {
-    score += 20;   // 숫자 포함
-  }
+  if (/\d/.test(text)) score += 20;
 
   /* =====================
      3. 연속 숫자
   ===================== */
-  if (/\d{2,}/.test(text)) {
-    score += 30;   // 2자리 이상 연속 숫자
-  }
+  if (/\d{2,}/.test(text)) score += 30;
 
   /* =====================
      4. 하이픈 포함
   ===================== */
-  if (text.includes("-")) {
-    score += 15;
-  }
+  if (text.includes("-")) score += 15;
 
   /* =====================
      5. 도메인 길이 (자동 생성형)
@@ -66,15 +60,16 @@ function calculateRiskScore(input) {
   if (text.endsWith(".com")) score += 10;
   if (text.endsWith(".kr")) score -= 20;
 
+  /* =====================
+     7. 자동 생성형 도메인 패턴 (핵심!)
+     숫자 + 하이픈 조합
+  ===================== */
+  if (/\d/.test(text) && text.includes("-")) {
+    score += 25;
+  }
+
   return Math.min(score, 100);
 }
-/* =====================
-   7. 자동 생성형 도메인 패턴
-   ===================== */
-if (/\d/.test(text) && text.includes("-")) {
-  score += 25;
-}
-return Math.min(score, 100);
 
 /* 점수 → 위험도 변환 */
 function getRiskLevel(score) {
