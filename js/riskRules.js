@@ -35,7 +35,7 @@ function calculateRiskScore(input) {
     ],
     adult: [
       "porn", "sex", "xxx", "adult",
-      "cam", "escort", "nude", "18"
+      "cam", "escort", "nude", "18", "av", "miss"
     ],
     illegal: [
       "drug", "weed", "coke", "herb",
