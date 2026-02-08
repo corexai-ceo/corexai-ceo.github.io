@@ -68,6 +68,13 @@ function calculateRiskScore(input) {
 
   return Math.min(score, 100);
 }
+/* =====================
+   7. 자동 생성형 도메인 패턴
+   ===================== */
+if (/\d/.test(text) && text.includes("-")) {
+  score += 25;
+}
+return Math.min(score, 100);
 
 /* 점수 → 위험도 변환 */
 function getRiskLevel(score) {
