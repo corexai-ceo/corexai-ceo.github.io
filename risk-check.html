@@ -18,9 +18,7 @@
       border-radius: 10px;
       box-shadow: 0 0 14px rgba(0,0,0,0.1);
     }
-    h2 {
-      margin-top: 0;
-    }
+    h2 { margin-top: 0; }
     input {
       width: 100%;
       padding: 12px;
@@ -41,12 +39,8 @@
       border-radius: 8px;
       line-height: 1.55;
     }
-    hr {
-      margin: 28px 0;
-    }
-    small {
-      color: #666;
-    }
+    hr { margin: 28px 0; }
+    small { color: #666; }
   </style>
 </head>
 <body>
@@ -56,14 +50,14 @@
 
   <p>
     입력한 URL을 기반으로 AI가 웹 패턴을 분석하여<br>
-    도박·유해 콘텐츠 위험 가능성을 자동으로 평가합니다.<br>
+    도박·성인·불법 콘텐츠 위험 가능성을 자동으로 평가합니다.<br>
     <small>※ 본 서비스는 테스트 버전입니다.</small>
   </p>
 
   <input
     type="text"
     id="urlInput"
-    placeholder="분석할 URL 또는 도메인을 입력하세요 (예: hoc-567.com)"
+    placeholder="분석할 URL 또는 도메인을 입력하세요 (예: missav.ws)"
   >
 
   <button onclick="analyzeRisk()">리스크 분석</button>
@@ -82,14 +76,10 @@
   </p>
 </div>
 
-<!-- ======================
-     Risk Rule Engine
-====================== -->
+<!-- 🔹 Risk Rule Engine -->
 <script src="js/riskRules.js"></script>
 
-<!-- ======================
-     UI Logic
-====================== -->
+<!-- 🔹 UI Logic -->
 <script>
 function analyzeRisk() {
   const input = document.getElementById("urlInput").value.trim();
@@ -102,17 +92,28 @@ function analyzeRisk() {
 
   // URL 자동 보정
   let target = input;
-  if (!/^https?:\/\//i.test(target)) {
+  if (!/^(https?:)?\/\//i.test(target)) {
     target = "https://" + target;
   }
 
-  // 분석 중 연출
+  // 로딩 연출
   result.innerHTML = "AI가 웹 패턴을 분석 중입니다...";
 
   setTimeout(() => {
+    if (typeof calculateRiskScore !== "function") {
+      result.innerHTML = "⚠️ 분석 엔진을 불러오지 못했습니다.";
+      return;
+    }
+
     const score = calculateRiskScore(target);
     const risk = getRiskLevel(score);
     const reason = generateAIDecisionReason(score);
+
+    // 점수별 배경 연출
+    result.style.background =
+      score >= 70 ? "#fdecea" :
+      score >= 40 ? "#fff4e5" :
+      "#eef2f7";
 
     result.innerHTML = `
       <strong style="color:${risk.color}; font-size:18px;">
@@ -130,6 +131,11 @@ function analyzeRisk() {
     `;
   }, 500);
 }
+
+// Enter 키 지원
+document.getElementById("urlInput").addEventListener("keydown", e => {
+  if (e.key === "Enter") analyzeRisk();
+});
 </script>
 
 </body>
