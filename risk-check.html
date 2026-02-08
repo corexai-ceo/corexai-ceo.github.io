@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>유해사이트 리스크 탐지</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fa;
+      padding: 40px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-bottom: 10px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 25px;
+      padding: 15px;
+      background-color: #eef2f7;
+      border-radius: 6px;
+    }
+    .risk-high { color: #c0392b; font-weight: bold; }
+    .risk-mid { color: #e67e22; font-weight: bold; }
+    .risk-low { color: #27ae60; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>유해사이트 리스크 탐지 (Beta)</h2>
+  <p>
+    URL을 입력하면 도박·유해 콘텐츠 위험 가능성을 분석합니다.<br>
+    <small>※ 본 서비스는 테스트 버전입니다.</small>
+  </p>
+
+  <input type="text" id="urlInput" placeholder="분석할 URL을 입력하세요">
+  <button onclick="analyzeRisk()">리스크 분석</button>
+
+  <div id="result" class="result">
+    분석 결과가 여기에 표시됩니다.
+  </div>
+
+  <hr>
+
+  <p>
+    <strong>분석 기준</strong><br>
+    - 도박 관련 키워드 및 문구 분석<br>
+    - 이미지(OCR) 기반 텍스트 판별<br>
+    - 기존 도박사이트 데이터셋(4,000건 이상)과의 패턴 비교
+  </p>
+</div>
+
+<script>
+function analyzeRisk() {
+  const url = document.getElementById("urlInput").value.trim();
+  const resultDiv = document.getElementById("result");
+
+  if (!url) {
+    resultDiv.innerHTML = "⚠️ URL을 입력해주세요.";
+    return;
+  }
+
+  // 임시 더미 로직 (나중에 Flask로 교체)
+  let riskText = "";
+  let riskClass = "";
+
+  if (url.includes("casino") || url.includes("bet") || url.includes("slot")) {
+    riskText = "도박 위험 가능성: 높음";
+    riskClass = "risk-high";
+  } else if (url.includes("game")) {
+    riskText = "도박 위험 가능성: 중간";
+    riskClass = "risk-mid";
+  } else {
+    riskText = "도박 위험 가능성: 낮음";
+    riskClass = "risk-low";
+  }
+
+  resultDiv.innerHTML = `
+    <span class="${riskClass}">${riskText}</span><br><br>
+    입력된 URL: ${url}<br>
+    ※ 본 결과는 사전 분석 기준에 따른 예비 판별 결과입니다.
+  `;
+}
+</script>
+
+</body>
+</html>
