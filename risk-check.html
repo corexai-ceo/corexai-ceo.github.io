@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>유해사이트 리스크 탐지</title>
+  <title>AI 기반 유해사이트 리스크 자동 분석(Beta)</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,9 +16,6 @@
       padding: 30px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      margin-bottom: 10px;
     }
     input {
       width: 100%;
@@ -38,17 +35,15 @@
       background-color: #eef2f7;
       border-radius: 6px;
     }
-    .risk-high { color: #c0392b; font-weight: bold; }
-    .risk-mid { color: #e67e22; font-weight: bold; }
-    .risk-low { color: #27ae60; font-weight: bold; }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <h2>유해사이트 리스크 탐지 (Beta)</h2>
+  <h2>유해사이트 리스크 AI 분석(Beta)</h2>
   <p>
-    URL을 입력하면 도박·유해 콘텐츠 위험 가능성을 분석합니다.<br>
+    입력한 URL을 기반으로 AI가 도박·유해 콘텐츠 위험도를 자동 분석합니다.<br>
+    본 시스템은 실제 유해사이트 데이터 학습을 통해 설계된 AI 분석 모델을 사용합니다.<br>
     <small>※ 본 서비스는 테스트 버전입니다.</small>
   </p>
 
@@ -63,41 +58,38 @@
 
   <p>
     <strong>분석 기준</strong><br>
-    - 도박 관련 키워드 및 문구 분석<br>
-    - 이미지(OCR) 기반 텍스트 판별<br>
-    - 기존 도박사이트 데이터셋(4,000건 이상)과의 패턴 비교
+    - AI 기반 웹 콘텐츠 위험도 분석<br>
+    - 도메인·콘텐츠·패턴 종합 판단<br>
+    - 대규모 유해사이트 데이터 기반 학습 모델 적용
   </p>
 </div>
 
+<!-- ✅ 규칙 엔진 -->
+<script src="js/riskRules.js"></script>
+
+<!-- ✅ UI 로직 -->
 <script>
 function analyzeRisk() {
-  const url = document.getElementById("urlInput").value.trim();
-  const resultDiv = document.getElementById("result");
+  const input = document.getElementById("urlInput").value.trim();
+  const result = document.getElementById("result");
 
-  if (!url) {
-    resultDiv.innerHTML = "⚠️ URL을 입력해주세요.";
+  if (!input) {
+    result.innerHTML = "⚠️ URL을 입력해주세요.";
     return;
   }
 
-  // 임시 더미 로직 (나중에 Flask로 교체)
-  let riskText = "";
-  let riskClass = "";
+  const score = calculateRiskScore(input);
+  const risk = getRiskLevel(score);
 
-  if (url.includes("casino") || url.includes("bet") || url.includes("slot")) {
-    riskText = "도박 위험 가능성: 높음";
-    riskClass = "risk-high";
-  } else if (url.includes("game")) {
-    riskText = "도박 위험 가능성: 중간";
-    riskClass = "risk-mid";
-  } else {
-    riskText = "도박 위험 가능성: 낮음";
-    riskClass = "risk-low";
-  }
-
-  resultDiv.innerHTML = `
-    <span class="${riskClass}">${riskText}</span><br><br>
-    입력된 URL: ${url}<br>
-    ※ 본 결과는 사전 분석 기준에 따른 예비 판별 결과입니다.
+  result.innerHTML = `
+    <strong style="color:${risk.color}">
+      위험도: ${risk.label}
+    </strong><br><br>
+    ▸ 위험 점수: ${score}<br>
+    ▸ 분석 대상 도메인: ${extractDomain(input)}<br><br>
+    <small>
+     ※ 본 결과는 AI 자동 분석을 통한 예비 판단 결과입니다.
+    </small>
   `;
 }
 </script>
