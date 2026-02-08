@@ -1,83 +1,81 @@
-/*************************************************
- * Domain Risk Scoring Engine v1.0
- * Core X AI
- * 규칙 기반 유해사이트 1차 판별 엔진
- *************************************************/
+/* ===============================
+   Core X AI - Risk Rule Engine v1.1
+   Domain Pattern + Keyword Hybrid
+   =============================== */
 
-// URL에서 도메인만 추출
+/* 도메인 추출 */
 function extractDomain(url) {
-  return url
-    .replace(/^https?:\/\//, "")
-    .replace(/^www\./, "")
-    .split("/")[0]
-    .toLowerCase();
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch (e) {
+    return url.toLowerCase();
+  }
 }
 
-// 위험 점수 계산
-function calculateRiskScore(url) {
+/* 위험 점수 계산 */
+function calculateRiskScore(input) {
+  const domain = extractDomain(input);
+  const text = domain.toLowerCase();
   let score = 0;
-  const domain = extractDomain(url);
-  const name = domain.split(".")[0];
 
-  /* ==========================
-     Rule 1. 숫자 포함 여부
-  ========================== */
-  if (/\d/.test(domain)) {
-    score += 25;
+  /* =====================
+     1. 키워드 기반
+  ===================== */
+  const highRiskKeywords = [
+    "casino", "bet", "slot", "gambling",
+    "poker", "baccarat", "roulette"
+  ];
+
+  highRiskKeywords.forEach(k => {
+    if (text.includes(k)) score += 30;
+  });
+
+  /* =====================
+     2. 숫자 포함 여부
+  ===================== */
+  if (/\d/.test(text)) {
+    score += 20;   // 숫자 포함
   }
 
-  /* ==========================
-     Rule 2. 연속 숫자 (2자리 이상)
-  ========================== */
-  if (/\d{2,}/.test(domain)) {
-    score += 30;
+  /* =====================
+     3. 연속 숫자
+  ===================== */
+  if (/\d{2,}/.test(text)) {
+    score += 30;   // 2자리 이상 연속 숫자
   }
 
-  /* ==========================
-     Rule 3. 하이픈 포함
-  ========================== */
-  if (domain.includes("-")) {
-    score += 20;
+  /* =====================
+     4. 하이픈 포함
+  ===================== */
+  if (text.includes("-")) {
+    score += 15;
   }
 
-  /* ==========================
-     Rule 4. 도메인 길이 (자동 생성형)
-  ========================== */
+  /* =====================
+     5. 도메인 길이 (자동 생성형)
+  ===================== */
+  const name = text.split(".")[0];
   if (name.length >= 8 && name.length <= 12) {
     score += 10;
   }
 
-  /* ==========================
-     Rule 5. TLD 패턴
-  ========================== */
-  if (domain.endsWith(".bet")) score += 40;
-  if (domain.endsWith(".com")) score += 10;
-  if (domain.endsWith(".kr")) score -= 20;
+  /* =====================
+     6. TLD 패턴
+  ===================== */
+  if (text.endsWith(".bet")) score += 40;
+  if (text.endsWith(".com")) score += 10;
+  if (text.endsWith(".kr")) score -= 20;
 
-  return score;
+  return Math.min(score, 100);
 }
 
-// 점수를 위험도 등급으로 변환
+/* 점수 → 위험도 변환 */
 function getRiskLevel(score) {
-  if (score >= 50) {
-    return {
-      level: "HIGH",
-      label: "고위험",
-      color: "#c0392b"
-    };
+  if (score >= 70) {
+    return { label: "높음", color: "#c0392b" };
   }
-
-  if (score >= 30) {
-    return {
-      level: "MEDIUM",
-      label: "의심",
-      color: "#e67e22"
-    };
+  if (score >= 40) {
+    return { label: "중간", color: "#e67e22" };
   }
-
-  return {
-    level: "LOW",
-    label: "낮음",
-    color: "#27ae60"
-  };
+  return { label: "낮음", color: "#27ae60" };
 }
