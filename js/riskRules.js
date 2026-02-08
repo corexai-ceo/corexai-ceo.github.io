@@ -30,7 +30,7 @@ function calculateRiskScore(input) {
     gambling: [
       "casino", "bet", "slot", "gambling",
       "poker", "baccarat", "roulette",
-      "sports", "odds", "vip", "win", "coin"
+      "sports", "odds", "vip", "win", "coin","toto"
     ],
     adult: [
       "porn", "sex", "xxx", "adult",
