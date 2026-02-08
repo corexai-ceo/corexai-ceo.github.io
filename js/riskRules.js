@@ -75,7 +75,7 @@ function calculateRiskScore(input) {
   ============================ */
   const lowTrustTLDs = [
     ".ws", ".ink", ".xyz", ".top", ".vip",
-    ".club", ".online", ".live", ".cc", ".pw"
+    ".club", ".online", ".live", ".cc", ".pw", ".org", ".gg"
   ];
 
   lowTrustTLDs.forEach(tld => {
